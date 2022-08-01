@@ -24,3 +24,7 @@ hs_err_pid*
 /service-monitor/monitor/target/
 /service-monitor/main/target/
 /service-monitor/observer/target/
+/multimodulemavenproject/entitymodule/target/
+/multimodulemavenproject/daomodule/target/
+/multimodulemavenproject/userdaomodule/target/
+/multimodulemavenproject/mainappmodule/target/

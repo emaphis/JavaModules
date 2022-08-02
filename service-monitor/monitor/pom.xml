@@ -19,6 +19,7 @@
 			<groupId>monitor</groupId>
 			<artifactId>observer</artifactId>
 			<version>1.0-SNAPSHOT</version>
+		 <type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>monitor</groupId>

@@ -2,6 +2,6 @@ package monitor.observer;
 
 public interface ServiceObserver {
 
-	DiagnosticDataPoint gatherDataFromService();
+    DiagnosticDataPoint gatherDataFromService();
 
 }

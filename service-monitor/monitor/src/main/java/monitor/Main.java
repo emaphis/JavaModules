@@ -19,42 +19,42 @@ import static java.util.stream.Collectors.toList;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Monitor monitor = createMonitor();
+    public static void main(String[] args) {
+        Monitor monitor = createMonitor();
 
-		MonitorServer server = MonitorServer
-				.create(monitor::currentStatistics)
-				.start();
+        MonitorServer server = MonitorServer
+                .create(monitor::currentStatistics)
+                .start();
 
-		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		scheduler.scheduleAtFixedRate(monitor::updateStatistics, 1, 1, TimeUnit.SECONDS);
-		scheduler.schedule(() -> {
-					scheduler.shutdown();
-					server.shutdown();
-				},
-				10,
-				TimeUnit.SECONDS);
-	}
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(monitor::updateStatistics, 1, 1, TimeUnit.SECONDS);
+        scheduler.schedule(() -> {
+            scheduler.shutdown();
+            server.shutdown();
+        },
+                10,
+                TimeUnit.SECONDS);
+    }
 
-	private static Monitor createMonitor() {
-		List<ServiceObserver> observers = Stream.of("alpha-1", "alpha-2", "alpha-3", "beta-1")
-				.map(Main::createObserver)
-				.flatMap(Optional::stream)
-				.collect(toList());
-		Statistician statistician = new Statistician();
-		StatisticsRepository repository = new StatisticsRepository();
-		Statistics initialStatistics = repository.load().orElseGet(statistician::emptyStatistics);
+    private static Monitor createMonitor() {
+        List<ServiceObserver> observers = Stream.of("alpha-1", "alpha-2", "alpha-3", "beta-1")
+                .map(Main::createObserver)
+                .flatMap(Optional::stream)
+                .collect(toList());
+        Statistician statistician = new Statistician();
+        StatisticsRepository repository = new StatisticsRepository();
+        Statistics initialStatistics = repository.load().orElseGet(statistician::emptyStatistics);
 
-		return new Monitor(observers, statistician, repository, initialStatistics);
-	}
+        return new Monitor(observers, statistician, repository, initialStatistics);
+    }
 
-	private static Optional<ServiceObserver> createObserver(String serviceName) {
-		return AlphaServiceObserver.createIfAlphaService(serviceName)
-				.or(() -> BetaServiceObserver.createIfBetaService(serviceName))
-				.or(() -> {
-					System.out.printf("No observer for %s found.%n", serviceName);
-					return Optional.empty();
-				});
-	}
+    private static Optional<ServiceObserver> createObserver(String serviceName) {
+        return AlphaServiceObserver.createIfAlphaService(serviceName)
+                .or(() -> BetaServiceObserver.createIfBetaService(serviceName))
+                .or(() -> {
+                    System.out.printf("No observer for %s found.%n", serviceName);
+                    return Optional.empty();
+                });
+    }
 
 }

@@ -13,34 +13,34 @@ import static java.util.stream.Collectors.toList;
 
 public class Monitor {
 
-	private final List<ServiceObserver> serviceObservers;
-	private final Statistician statistician;
-	private final StatisticsRepository repository;
+    private final List<ServiceObserver> serviceObservers;
+    private final Statistician statistician;
+    private final StatisticsRepository repository;
 
-	private Statistics currentStatistics;
+    private Statistics currentStatistics;
 
-	public Monitor(
-			List<ServiceObserver> serviceObservers,
-			Statistician statistician,
-			StatisticsRepository repository,
-			Statistics initialStatistics) {
-		this.serviceObservers = requireNonNull(serviceObservers);
-		this.statistician = requireNonNull(statistician);
-		this.repository = requireNonNull(repository);
-		this.currentStatistics = requireNonNull(initialStatistics);
-	}
+    public Monitor(
+            List<ServiceObserver> serviceObservers,
+            Statistician statistician,
+            StatisticsRepository repository,
+            Statistics initialStatistics) {
+        this.serviceObservers = requireNonNull(serviceObservers);
+        this.statistician = requireNonNull(statistician);
+        this.repository = requireNonNull(repository);
+        this.currentStatistics = requireNonNull(initialStatistics);
+    }
 
-	public void updateStatistics() {
-		List<DiagnosticDataPoint> newData = serviceObservers.stream()
-				.map(ServiceObserver::gatherDataFromService)
-				.collect(toList());
-		Statistics newStatistics = statistician.compute(currentStatistics, newData);
-		currentStatistics = newStatistics;
-		repository.store(newStatistics);
-	}
+    public void updateStatistics() {
+        List<DiagnosticDataPoint> newData = serviceObservers.stream()
+                .map(ServiceObserver::gatherDataFromService)
+                .collect(toList());
+        Statistics newStatistics = statistician.compute(currentStatistics, newData);
+        currentStatistics = newStatistics;
+        repository.store(newStatistics);
+    }
 
-	public Statistics currentStatistics() {
-		return currentStatistics;
-	}
+    public Statistics currentStatistics() {
+        return currentStatistics;
+    }
 
 }

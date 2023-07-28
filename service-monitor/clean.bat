@@ -1,5 +1,5 @@
 @echo off
-echo "--- COMPILATION & PACKAGING ---"
+echo "--- CLEAN PROJECT ---"
 
 echo " > creating clean directories"
 del /s /q classes

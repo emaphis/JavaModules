@@ -4,6 +4,8 @@
 
 ## Chap02 Anatomy of a modular application
 
+See:  /JavaModules/service-monitor
+
 ## Chap03 Defining modules and their properties
 
 ## Chap04 Buiding modules from source to JAR

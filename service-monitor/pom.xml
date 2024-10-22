@@ -154,5 +154,5 @@
             </build>
         </profile>
     </profiles>
-
+    <name>service-monitor</name>
 </project>

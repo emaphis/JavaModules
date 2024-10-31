@@ -28,3 +28,4 @@ hs_err_pid*
 /multimodulemavenproject/daomodule/target/
 /multimodulemavenproject/userdaomodule/target/
 /multimodulemavenproject/mainappmodule/target/
+/hello-world/jpms-hello-world/target/

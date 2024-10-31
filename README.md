@@ -1,6 +1,16 @@
 # JavaModules
 
-A repository to store Java JPMS exercises
+A repository to store Java JPMS exercises, particularly from NipAFX
+
+## Code-First Java Module System Tutorial
+
+NipAFX's introductory JPMS Module System Tutorial
+
+dir: ./hello-world
+
+<https://nipafx.dev/java-module-system-tutorial/>
+
+<https://github.com/nipafx/demo-jpms-hello-world>
 
 ## Examples from Nicolai Parlog's "The Java Module System"
 
@@ -12,15 +22,15 @@ dir: service-monitor
 
 dir: multimodulemavenproject
 
-# Book chapter references to git branches.
+## Book chapter references to git branches
 
-## Exploring basic features
+### Exploring basic features
 
 2.2  - master (basic features)
 
 5.2  - resourse-encapsulation
 
-10.  - feature-services
+10   - feature-services
 
 11.1 - implied readability
 
@@ -36,7 +46,7 @@ dir: multimodulemavenproject
 
 15.1 - features-combined (final version)
 
-## Exploration of how things can break
+### Exploration of how things can break
 
 3.3.2 - missing transitive dependency
 
@@ -51,4 +61,3 @@ dir: multimodulemavenproject
 3.3.3 - reflection over internals
 
       - break-package-not-exported-compile-time
-

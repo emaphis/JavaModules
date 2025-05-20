@@ -4,9 +4,7 @@ A repository to store Java JPMS exercises, particularly from NipAFX
 
 ## Code-First Java Module System Tutorial
 
-NipAFX's introductory JPMS Module System Tutorial
-
-dir: ./hello-world
+## Nipafx tutorials
 
 <https://nipafx.dev/java-module-system-tutorial/>
 
